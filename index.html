@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visitas Académicas</title>
+  <link rel="stylesheet" href="/estilos.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap topinner">
+      <div class="mark">VA</div>
+      <div><strong>SISTEMA DE VISITAS ACADÉMICAS</strong><small>Planeación y seguimiento</small></div>
+      <span class="tag">MYSQL</span>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="connection-status" aria-live="polite">
+      <p id="connectionStatus" class="connection-message">Conectando con el servidor...</p>
+      <button id="retryConnection" class="btn outline small hidden" type="button">Reintentar conexión</button>
+    </div>
+    <div class="hero">
+      <div>
+        <span class="eyebrow">GESTIÓN UNIVERSITARIA</span>
+        <h1>Programar <em>visitas académicas</em></h1>
+        <p>Selecciona grupos, confirma asistentes y organiza una visita presencial o virtual.</p>
+      </div>
+      <div class="hero-icon">✦</div>
+    </div>
+    <div class="layout">
+      <div class="maincol">
+        <section class="panel">
+          <div class="heading">
+            <div><span class="step">01</span><h2>Grupos participantes</h2></div>
+            <button id="addGroup" class="btn outline" type="button" disabled>＋ Agregar grupo</button>
+          </div>
+          <div id="groupCards"></div>
+          <div id="groupPicker" class="picker hidden">
+            <label for="groupSelect">Selecciona otro grupo</label>
+            <select id="groupSelect"></select>
+            <button id="confirmGroup" class="btn" type="button">Agregar</button>
+          </div>
+        </section>
+        <section class="panel">
+          <div class="heading"><div><span class="step">02</span><h2>Información general</h2></div></div>
+          <label for="objective">Objetivo académico</label>
+          <textarea id="objective" rows="3" placeholder="¿Qué se busca aprender con la visita?"></textarea>
+          <div class="two">
+            <div><label for="status">Estado</label><select id="status"><option>Propuesta</option><option>Programada</option><option>Realizada</option><option>Cancelada</option></select></div>
+            <div><label for="type">Modalidad</label><select id="type"><option value="Presencial">Presencial</option><option value="Virtual">Virtual</option></select></div>
+          </div>
+        </section>
+        <section class="panel">
+          <div class="heading"><div><span class="step">03</span><h2>Detalles de la visita</h2></div></div>
+          <div class="two">
+            <div><label for="date">Fecha propuesta</label><input id="date" type="date"></div>
+            <div><label for="time">Hora</label><input id="time" type="time"></div>
+          </div>
+          <div id="physical">
+            <label for="topics">Temas o materias a abordar</label>
+            <textarea id="topics" rows="2" placeholder="Escribe los temas..."></textarea>
+            <div class="heading minor"><h3>Unidades de transporte</h3><button class="btn outline" id="addBus" type="button">＋ Agregar unidad</button></div>
+            <div id="buses"></div>
+          </div>
+          <div id="virtual" class="hidden">
+            <label for="link">Enlace del recorrido</label>
+            <input id="link" type="url" placeholder="https://...">
+          </div>
+        </section>
+      </div>
+      <aside class="sidebar">
+        <section class="panel summary">
+          <div class="eyebrow">RESUMEN EN TIEMPO REAL</div>
+          <h2>Tu visita</h2>
+          <div class="metrics">
+            <div><b id="numGroups">0</b><small>Grupos</small></div>
+            <div><b id="numPresent">0</b><small>Asistentes</small></div>
+            <div><b id="numAbsent">0</b><small>Ausentes</small></div>
+          </div>
+          <div id="summaryGroups"></div>
+          <hr>
+          <div class="summaryline"><span>Modalidad</span><strong id="summaryType">Presencial</strong></div>
+          <div class="summaryline"><span>Estado</span><strong id="summaryStatus">Propuesta</strong></div>
+          <div id="capacityBox">
+            <div class="summaryline"><span>Asientos disponibles</span><strong id="capacity">0</strong></div>
+            <div class="summaryline"><span>Saldo de asientos*</span><strong id="remaining">0</strong></div>
+            <p class="hint">*Cuenta solo alumnos; considera tutores y acompañantes antes de confirmar.</p>
+          </div>
+          <p id="warning" class="warning hidden"></p>
+          <button id="save" class="btn full" type="button" disabled>Guardar visita en MySQL</button>
+          <button id="download" class="btn outline full" type="button">Descargar reporte JSON</button>
+          <p id="savedMessage" class="hint" role="status"></p>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <footer class="wrap foot">Planeación y seguimiento de visitas académicas</footer>
+  <script src="/script.js"></script>
+</body>
+</html>

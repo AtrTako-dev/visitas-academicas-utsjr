@@ -1,0 +1,10 @@
+Visitas Académicas se ejecuta con el servidor local y guarda la información en MySQL.
+
+1. Confirma que MySQL esté activo y que las variables DB_HOST, DB_PORT, DB_USER, DB_PASSWORD y DB_NAME estén configuradas en .env.
+2. Desde esta carpeta, ejecuta npm start.
+3. Abre http://127.0.0.1:3000 en el navegador. No abras index.html directamente como archivo.
+4. El indicador superior confirma la conexión a la base y muestra cuántos grupos se cargaron.
+5. Marca asistentes y completa la visita; Guardar visita en MySQL registra la visita y sus relaciones en una transacción.
+6. base_datos.sql crea el esquema y agrega grupos de ejemplo sin borrar los datos existentes. Se puede ejecutar más de una vez.
+
+El servidor atiende conexiones solo en la computadora local. El archivo .env contiene credenciales y no debe compartirse ni subirse al repositorio.
